@@ -20,8 +20,9 @@
 # How to use
 
 ## Write 'URL+blank space+Name' such as 'apple.com Apple' or 'google.com Google'(The name does not contain spaces)
-## Run command
-"""
+## Run command to use
+
+```
+cd InstallPath
 python main.py
-"""
-##to use
+```
