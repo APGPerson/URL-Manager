@@ -12,7 +12,7 @@
 
 - [X]  Check url
 - [ ]  URLs editor
-- [ ]  Can use external files
+- [x]  Can use external files
 - [ ]  Add GUI
 
 ---

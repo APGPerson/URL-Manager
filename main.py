@@ -1,7 +1,10 @@
 # -*- coding=utf-8 -*-
+import os
+
 import requests,threading,logging
 from sys import exit
 from shutil import copyfile
+from tkinter import filedialog
 import time
 def CheckUrl(url):
     try:
@@ -52,13 +55,32 @@ def Print(urls,names):
     return 0
 if __name__ == '__main__':
     logging.basicConfig(filename='log.txt',filemode='w',level=logging.DEBUG)
+    m = input('Please choose url file:\n[0] PROGRAM INSTALL PATH\\URLS.TXT\n[1]User input file path')
+    fileName = ''
+    if m == '0':
+        fileName = '.\\URLS.TXT'
+    elif m == '1':
+        fileName = filedialog.askopenfilename(defaultextension='.txt',filetypes=[('TXT','.txt')],title='Choose URL file')
+    else:
+        print('PLEASE INPUT 0 OR 1')
+        time.sleep(5)
+        exit(1)
+    if fileName == '':
+        print('PLEASE CHOOSE A URL FILE')
+        time.sleep(5)
+        exit(1)
+    elif fileName[-4:] != '.txt':
+        print('PLEASE CHOOSE A URL FILE(TXT)')
+        time.sleep(5)
+        exit(1)
     urllist = []
     namelist = []
     stlist = []
+    existurlfile = 'EXISTURLS'+str(int(time.time()))+'.TXT'
     try:
-        with open('EXISTURLS.TXT','w',encoding='utf-8') as f:
+        with open(existurlfile,'w',encoding='utf-8') as f:
             f.close()
-        with open('URLS.TXT','r',encoding='utf-8-sig') as f:
+        with open(fileName,'r',encoding='utf-8-sig') as f:
             data=f.readlines()
             f.close()
     except Exception as e:
@@ -110,4 +132,6 @@ if __name__ == '__main__':
             logging.error(str(e))
             time.sleep(5)
             exit(1)
+    else:
+        os.remove(existurlfile)
     exit()

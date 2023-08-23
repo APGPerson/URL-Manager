@@ -1,3 +1,4 @@
+''' NOT FINISHED
 from sys import exit
 def urllen(text):
     while len(text) < 60:
@@ -54,4 +55,4 @@ while True:
         arg=choosearg(userinput[4:7])
     elif userinput[:5] == 'save ':
     else:
-        print('[ERROR]THIS COMMAND IS NOT EXIST')
+        print('[ERROR]THIS COMMAND IS NOT EXIST')'''
